@@ -16,9 +16,21 @@
   .nav-header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
   .nav-header .nav-brand {
     margin-right: 10px;
+  }
+  .nav-header .nav-brand.static-logo {
+    display: none;
+  }
+  .nav-header .nav-brand.fixed-logo {
+    display: block;
+  }
+  .nav-header .nav-brand img {
+    height: 40px;
+    display: block;
   }
   .nav-toggle {
     display: none;
@@ -36,9 +48,9 @@
   }
   .mobile-menu-btn span {
     display: block;
-    height: 2px;
+    height: 3px;
     width: 100%;
-    background: #fff;
+    background: #d4af37;
     transition: all 0.3s ease;
   }
   .mobile-menu-btn.active span:nth-child(1) {
