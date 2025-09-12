@@ -6,6 +6,14 @@ document.addEventListener('DOMContentLoaded',function(){
     toggle.addEventListener('click',function(){
       wrapper.classList.toggle('open');
       toggle.classList.toggle('open');
+      document.body.classList.toggle('menu-open');
+    });
+    document.querySelectorAll('.nav-menu a').forEach(function(link){
+      link.addEventListener('click',function(){
+        wrapper.classList.remove('open');
+        toggle.classList.remove('open');
+        document.body.classList.remove('menu-open');
+      });
     });
   }
 });
