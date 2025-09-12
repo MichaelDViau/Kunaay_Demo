@@ -1,26 +1,28 @@
 document.addEventListener('DOMContentLoaded', function () {
   if (window.innerWidth > 1024) return;
 
-  var header = document.querySelector('.nav-header');
-  if (!header) return;
+  var container = document.querySelector('.header .container');
+  if (!container) return;
 
-  // Remove existing nav toggle if present
-  var oldToggle = header.querySelector('.nav-toggle');
-  if (oldToggle) {
-    oldToggle.remove();
-  }
+  container.innerHTML = '
+    <div class="mobile-header">
+      <a href="index.html" class="mobile-logo"><img src="assets/img/logo.png" alt="Logo"></a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  ';
 
-  // Create hamburger button
-  var btn = document.createElement('button');
-  btn.className = 'mobile-menu-btn';
-  btn.innerHTML = '<span></span><span></span><span></span>';
-  header.appendChild(btn);
-
-  // Create overlay with links
   var overlay = document.createElement('div');
   overlay.className = 'mobile-menu-overlay';
-  overlay.innerHTML = '\n    <a href="index.html">HOME</a>\n    <a href="rentals.html">RENTALS</a>\n    <a href="sales.html">SALES</a>\n    <a href="aboutUs.html">ABOUT US</a>\n    <a href="contact.html">CONTACT</a>\n  ';
+  overlay.innerHTML = '
+    <a href="index.html">HOME</a>
+    <a href="rentals.html">RENTALS</a>
+    <a href="sales.html">SALES</a>
+    <a href="aboutUs.html">ABOUT US</a>
+    <a href="contact.html">CONTACT</a>
+  ';
   document.body.appendChild(overlay);
+
+  var btn = container.querySelector('.mobile-menu-btn');
 
   function closeMenu() {
     overlay.classList.remove('open');
