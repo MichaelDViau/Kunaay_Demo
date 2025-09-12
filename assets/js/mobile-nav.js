@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
+  if (window.innerWidth > 1024) return;
+
   var header = document.querySelector('.nav-header');
   if (!header) return;
 

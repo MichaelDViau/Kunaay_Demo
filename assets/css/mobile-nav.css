@@ -1,4 +1,10 @@
-@media (max-width: 768px) {
+/* Hide mobile menu elements by default */
+.mobile-menu-btn,
+.mobile-menu-overlay {
+  display: none;
+}
+
+@media (max-width: 1024px) {
   body {
     padding-top: 60px;
   }
@@ -42,7 +48,8 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 5px;
     height: 24px;
     width: 30px;
   }
