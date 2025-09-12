@@ -57,8 +57,11 @@
     display: block;
     height: 3px;
     width: 100%;
-    background: #d4af37;
+    background: #d4af37 !important;
     transition: all 0.3s ease;
+  }
+  .mobile-menu-btn.active span {
+    background: #d4af37 !important;
   }
   .mobile-menu-btn.active span:nth-child(1) {
     transform: translateY(10px) rotate(45deg);
