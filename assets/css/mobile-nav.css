@@ -57,11 +57,11 @@
     display: block;
     height: 3px;
     width: 100%;
-    background: #d4af37 !important;
+    background: #c8b16a !important;
     transition: all 0.3s ease;
   }
   .mobile-menu-btn.active span {
-    background: #d4af37 !important;
+    background: #c8b16a !important;
   }
   .mobile-menu-btn.active span:nth-child(1) {
     transform: translateY(10px) rotate(45deg);
@@ -92,7 +92,7 @@
     display: flex;
   }
   .mobile-menu-overlay a {
-    color: #d4af37;
+    color: #c8b16a;
     font-size: 1.5rem;
     margin: 10px 0;
     text-decoration: none;
