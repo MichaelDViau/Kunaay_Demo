@@ -75,4 +75,13 @@
     margin: 10px 0;
     text-decoration: none;
   }
+
+  /* Ensure View Detail buttons stay centered and wide on small screens */
+  .listing-detail-footer {
+    justify-content: center;
+  }
+
+  .footer-flex .prt-view {
+    padding: 4px 120px;
+  }
 }
