@@ -93,20 +93,22 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 2px 16px;
-  border-radius: 20px;
-  background: #f2b705;
+  padding: 1px 14px;
+  border-radius: 999px;
+  background: #c8b16a;
   color: #111;
   font-weight: 600;
   font-size: 0.7rem;
   letter-spacing: 0.3px;
-  line-height: 1.1;
+  line-height: 1;
+  align-self: center;
 }
 
 .nav-menu-language {
   margin-left: auto;
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
 .navigation-landscape .nav-menu {
