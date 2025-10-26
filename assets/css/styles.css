@@ -102,7 +102,14 @@
   letter-spacing: 0.3px;
   line-height: 1;
   align-self: center;
-  margin-block: 6px;
+  margin-block: 16px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.language-toggle-link:hover,
+.language-toggle-link:focus-visible,
+.language-toggle-link:active {
+  color: #fff;
 }
 
 .nav-menu-language {
