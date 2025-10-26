@@ -93,8 +93,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 18px;
-  border-radius: 999px;
+  padding: 4px 14px;
+  border-radius: 12px;
   background: #c8b16a;
   color: #111;
   font-weight: 600;
@@ -102,7 +102,7 @@
   letter-spacing: 0.3px;
   line-height: 1;
   align-self: center;
-  margin-block: 16px;
+  margin-block: 0;
   transition: color 0.2s ease, background 0.2s ease;
 }
 
