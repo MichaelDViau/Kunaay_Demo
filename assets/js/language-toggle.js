@@ -99,7 +99,7 @@
   }
 
   function updateToggleText(lang) {
-    const nextLabel = lang === 'es' ? 'English' : 'Español';
+    const nextLabel = lang === 'es' ? '🇺🇸 English' : '🇲🇽 Español';
     const aria = lang === 'es'
       ? 'Cambiar el idioma del sitio a inglés'
       : 'Switch site language to Spanish';
