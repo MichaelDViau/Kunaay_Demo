@@ -18,8 +18,7 @@
     current: 'en',
     textNodes: [],
     attributeNodes: [],
-    toggles: [],
-    observer: null
+    toggles: []
   };
 
   const SKIP_TAGS = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT']);
@@ -162,23 +161,10 @@
     updateToggleText(state.current);
   }
 
-  function observeToggles() {
-    if (state.observer) {
-      return;
-    }
-
-    state.observer = new MutationObserver(() => {
-      collectToggles();
-    });
-
-    state.observer.observe(document.body, { childList: true, subtree: true });
-  }
-
   document.addEventListener('DOMContentLoaded', () => {
     collectTextNodes(document.body);
     collectAttributeNodes();
     collectToggles();
-    observeToggles();
 
     const initialLang = getStoredLanguage();
     applyLanguage(initialLang);
