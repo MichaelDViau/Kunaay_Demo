@@ -1,0 +1,63 @@
+.navigation .nav-menu > li.language-toggle-item {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  color: #cab36f;
+}
+
+.navigation-portrait .nav-menu > li.language-toggle-item {
+  margin-left: 0;
+  color: inherit;
+}
+
+.navigation-portrait .nav-menu > li.language-toggle-item .language-toggle-btn {
+  padding: 12px 26px 12px 26px;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.language-toggle-btn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 0;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.language-toggle-btn:hover,
+.language-toggle-btn:focus {
+  color: #f7c35f;
+}
+
+.language-toggle-btn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.header.header-transparent .language-toggle-btn {
+  color: #000000;
+}
+
+.header.header-transparent.header-fixed .language-toggle-btn,
+.header.header-transparent.dark-text .language-toggle-btn {
+  color: #c7b169;
+}
+
+#google_translate_element,
+body > .skiptranslate,
+.goog-te-banner-frame,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
