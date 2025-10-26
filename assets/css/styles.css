@@ -87,3 +87,42 @@
     bottom: 28px;
   }
 }
+
+/* Language toggle */
+.language-toggle-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 4px;
+  background: #f2b705;
+  color: #000;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.navigation-landscape .nav-menu > li > a.language-toggle-link:hover,
+.navigation-landscape .nav-menu > li > a.language-toggle-link:focus {
+  color: #fff;
+  background: #000;
+}
+
+.language-toggle-link[aria-busy="true"] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+#google_translate_element,
+.goog-te-banner-frame.skiptranslate,
+.goog-te-gadget-icon {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+.skiptranslate iframe {
+  display: none !important;
+}

@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <a href="rentals.html">RENTALS</a>
     <a href="sales.html">SALES</a>
     <a href="aboutUs.html">ABOUT US</a>
+    <a href="#" id="language-toggle" class="language-toggle-link" data-current-lang="en" aria-label="Switch site language to Spanish">Español</a>
     <a href="contact.html">CONTACT</a>
   `;
   document.body.appendChild(overlay);
