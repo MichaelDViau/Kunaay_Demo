@@ -8,6 +8,7 @@
 
     <link href="assets/css/styles.css" rel="stylesheet" />
     <link href="assets/css/mobile-nav.css" rel="stylesheet" />
+    <link href="assets/css/language-toggle.css" rel="stylesheet" />
   </head>
 
   <body class="yellow-skin">
@@ -41,10 +42,13 @@
               <li><a href="sales.html">SALES</a></li>
               <li><a href="aboutUs.html">ABOUT US</a></li>
               <li><a href="contact.html">CONTACT</a></li>
+            
+              <li class="language-toggle-item"><button id="language-toggle" class="language-toggle-btn" type="button">Spanish</button></li>
             </ul>
           </div>
           <!-- ============================ NAV BAR END ================================== -->
         </nav>
+                                <div id="google_translate_element" aria-hidden="true"></div>
       </div>
     </div>
 
@@ -221,8 +225,10 @@
     </div>
 
 <!-- ============================ JQUERY AND PLUGINS SECTION START ================================== -->
+                                <script src="assets/js/language-toggle.js" defer></script>
+                                <script src="//translate.google.com/translate_a/element.js?cb=initGoogleTranslate" defer></script>
 
-    <script src="assets/js/jquery.min.js" defer></script>
+                <script src="assets/js/jquery.min.js" defer></script>
     <script src="assets/js/popper.min.js" defer></script>
     <script src="assets/js/bootstrap.min.js" defer></script>
     <script src="assets/js/ion.rangeSlider.min.js" defer></script>

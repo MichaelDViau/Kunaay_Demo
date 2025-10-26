@@ -8,6 +8,7 @@
      
         <link href="assets/css/styles.css" rel="stylesheet">
         <link href="assets/css/mobile-nav.css" rel="stylesheet">
+        <link href="assets/css/language-toggle.css" rel="stylesheet">
 		
     </head>	
     <body class="yellow-skin">
@@ -26,9 +27,12 @@
 							<li><a href="sales.html">SALES</a></li>
 							<li><a href="aboutUs.html">ABOUT US</a></li>	
 							<li><a href="contact.html">CONTACT</a></li>															
+							
+							<li class="language-toggle-item"><button id="language-toggle" class="language-toggle-btn" type="button">Spanish</button></li>
 							</ul>
 						</div>
 					</nav>
+                                <div id="google_translate_element" aria-hidden="true"></div>
 				</div>
 			</div>
 						
@@ -425,9 +429,11 @@
 		      <path d="M20.52 3.48A11.77 11.77 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.1.55 4.17 1.59 5.98L0 24l6.22-1.62A11.91 11.91 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 22a10.28 10.28 0 0 1-5.22-1.43l-.37-.22-3.69.96.99-3.6-.24-.38A10.33 10.33 0 1 1 12 22zm5.47-7.66c-.25-.12-1.47-.72-1.7-.8-.23-.08-.4-.12-.57.12-.17.23-.66.8-.8.97-.15.17-.29.18-.54.06a8.3 8.3 0 0 1-2.45-1.5 9.17 9.17 0 0 1-1.7-2.05c-.18-.3-.02-.46.14-.6.14-.14.3-.37.45-.55.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.5-.08-.12-.57-1.38-.78-1.89-.2-.48-.4-.42-.57-.42h-.5c-.17 0-.45.06-.68.32-.23.26-.89.87-.89 2.12 0 1.25.91 2.46 1.04 2.63.14.17 1.79 2.73 4.34 3.83.61.26 1.09.42 1.47.54.62.2 1.19.17 1.64.1.5-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29Z" />
 		    </svg>
 		  </a>
-		</div>
+		
+                                <script src="assets/js/language-toggle.js" defer></script>
+                                <script src="//translate.google.com/translate_a/element.js?cb=initGoogleTranslate" defer></script>
 
-<script src="assets/js/jquery.min.js" defer></script>
+                <script src="assets/js/jquery.min.js" defer></script>
 		<script src="assets/js/popper.min.js" defer></script>
 		<script src="assets/js/bootstrap.min.js" defer></script>
 		<script src="assets/js/ion.rangeSlider.min.js" defer></script>
