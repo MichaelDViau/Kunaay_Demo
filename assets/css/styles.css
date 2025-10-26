@@ -93,13 +93,21 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 18px;
-  border-radius: 4px;
+  padding: 4px 12px;
+  border-radius: 999px;
   background: #f2b705;
   color: #000;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  font-size: 0.75rem;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
   transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-menu-language {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
 }
 
 .navigation-landscape .nav-menu > li > a.language-toggle-link:hover,
@@ -111,18 +119,4 @@
 .language-toggle-link[aria-busy="true"] {
   opacity: 0.6;
   pointer-events: none;
-}
-
-#google_translate_element,
-.goog-te-banner-frame.skiptranslate,
-.goog-te-gadget-icon {
-  display: none !important;
-}
-
-body {
-  top: 0 !important;
-}
-
-.skiptranslate iframe {
-  display: none !important;
 }
