@@ -93,15 +93,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 12px;
-  border-radius: 999px;
+  padding: 2px 16px;
+  border-radius: 20px;
   background: #f2b705;
-  color: #000;
+  color: #111;
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   letter-spacing: 0.3px;
-  line-height: 1.2;
-  transition: background 0.2s ease, color 0.2s ease;
+  line-height: 1.1;
 }
 
 .nav-menu-language {
@@ -110,10 +109,18 @@
   align-items: center;
 }
 
-.navigation-landscape .nav-menu > li > a.language-toggle-link:hover,
-.navigation-landscape .nav-menu > li > a.language-toggle-link:focus {
-  color: #fff;
-  background: #000;
+.navigation-landscape .nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.navigation-landscape .nav-menu > li {
+  float: none;
+}
+
+.navigation-landscape .nav-menu > li.nav-menu-language {
+  margin-left: auto;
 }
 
 .language-toggle-link[aria-busy="true"] {
