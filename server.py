@@ -9,6 +9,7 @@ import sqlite3
 import string
 import time
 import urllib.parse
+from typing import Optional
 from http import HTTPStatus
 from http.cookies import SimpleCookie
 from http.server import SimpleHTTPRequestHandler, HTTPServer
@@ -106,7 +107,7 @@ def slugify(value: str) -> str:
     return slug or secrets.token_hex(4)
 
 
-def hash_password(password: str, salt_hex: str | None = None):
+def hash_password(password: str, salt_hex: Optional[str] = None):
     if salt_hex is None:
         salt = os.urandom(16)
     else:
