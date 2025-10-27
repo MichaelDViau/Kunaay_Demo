@@ -1,35 +1,75 @@
-Kunaay Real Estate
+# Kunaay Real Estate Platform
 
-Kunaay Real Estate is dedicated to rentals and sales in the Riviera Maya. Inspired by the ocean’s rhythm and the timeless beauty of blooming flowers, our mission is to help people find homes and investments that bring peace, joy, and growth.
-This repository contains the source code and assets for the Kunaay website.
+Kunaay Real Estate curates vacation rentals and property sales throughout the Riviera Maya. This repository now includes a lightweight Python backend plus an admin panel so non-technical collaborators can publish listings without touching code.
 
-Philosophy
+## Highlights
 
-Every property, like every flower, has its own color, fragrance, and rhythm. Just as the sea shapes the coast with patience and flow, Kunaay guides clients to spaces that harmonize with their lives.
-Renters can find bright apartments, beachfront condos, and family homes designed for both comfort and connection.
-Buyers can step into ownership with options ranging from modern residences to hidden villas touched by the Caribbean breeze.
+- **Dynamic listings** – Rental and sale cards on `index.html`, `rentals.html`, and `sales.html` are rendered from live listing data served by the backend.
+- **Auto-generated detail pages** – Each property has a permalink at `listing.html?slug=<listing-slug>` with long-form descriptions and image galleries.
+- **Browser-based admin panel** – Visit `/admin` to log in, add listings (with photo uploads), and remove outdated entries instantly.
+- **Zero external dependencies** – The backend runs entirely on the Python standard library and SQLite, making local development straightforward even in restricted environments.
 
-Why the Riviera Maya
+## Getting started
 
-The Riviera Maya is where ocean and jungle meet, where every sunrise feels like a fresh beginning and every sunset paints the horizon with warmth.
-It offers:
-A coastal lifestyle surrounded by turquoise waters and white sands.
-A rich cultural landscape full of tradition and color.
-A natural balance of relaxation, adventure, and growth.
+1. **Create a virtual environment (optional but recommended):**
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   ```
 
-Features
+2. **Configure credentials:**
+   - Copy `.env.example` to `.env` and update `ADMIN_PASSWORD` (and `ADMIN_USERNAME` if needed).
+   - The default credentials are `admin` / `admin123` for first run.
 
-The Kunaay platform is designed to showcase properties with care and clarity.
-Long-term Rentals — for those seeking immersion in the Riviera Maya lifestyle.
-Vacation Rentals — for travelers searching for comfort and authenticity.
-Sales & Investments — handpicked listings that carry both beauty and value.
+3. **Launch the backend server:**
+   ```bash
+   python server.py
+   ```
+   The server starts on [http://localhost:8000](http://localhost:8000). Static pages and API endpoints are available from the same origin.
 
-Our Promise
+4. **Seed data:**
+   - On first run the database is created automatically with two sample listings (one rental and one sale) so the site has content immediately.
 
-Kunaay Real Estate is built on transparency and trust. We commit to:
-Honest and informed guidance.
+## Admin workflow
 
-Personalized recommendations that reflect real needs.
-Full support before, during, and after each transaction.
+1. Navigate to `http://localhost:8000/admin`.
+2. Sign in with the admin credentials.
+3. Use the **Add a new listing** form to set the title, category, short summary, full description, and optional photo uploads. Supported categories are `rental` and `sale`.
+4. Click **Create listing** – the property appears instantly on the homepage, category page, and gains its own detail page.
+5. Use the **Delete** action to retire listings; all associated uploads are removed from disk.
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+## Front-end behavior
+
+- The homepage shows featured rentals and sales by requesting `/api/listings?type=rental&limit=3` and `/api/listings?type=sale&limit=3`.
+- `rentals.html` and `sales.html` request all listings of their respective categories.
+- `listing.html` reads a `slug` query parameter and fetches `/api/listings/<slug>` to populate the detail view.
+
+## API summary
+
+| Endpoint | Method | Description |
+| --- | --- | --- |
+| `/api/listings` | `GET` | Returns all listings (filter with `type` and `limit` query parameters). |
+| `/api/listings/<slug>` | `GET` | Returns a single listing with image paths. |
+| `/api/login` | `POST` | Authenticates an admin user. |
+| `/api/logout` | `POST` | Ends the current admin session. |
+| `/api/admin/listings` | `GET` | Returns all listings (auth required). |
+| `/api/admin/listings` | `POST` | Creates a listing from `multipart/form-data` (auth required). |
+| `/api/admin/listings/<id>/delete` | `POST` | Deletes a listing and its uploads (auth required). |
+
+Session cookies are HTTP-only and expire after eight hours of inactivity.
+
+## Data storage
+
+- SQLite database file: `data/app.db` (ignored by Git).
+- Uploaded images: `uploads/` (ignored by Git).
+- Seeded assets reference existing photos in `assets/img/photos/`.
+
+## Security notes
+
+- Always update the default admin password before deploying.
+- Serve the application behind HTTPS in production for secure credential transmission.
+- Consider rotating session secrets and enhancing password policies before going live.
+
+## License
+
+This project remains under the MIT License. See `LICENSE` for details.
