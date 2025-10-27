@@ -9,7 +9,43 @@ Kunaay Real Estate curates vacation rentals and property sales throughout the Ri
 - **Browser-based admin panel** – Visit `/admin` to log in, add listings (with photo uploads), and remove outdated entries instantly.
 - **Zero external dependencies** – The backend runs entirely on the Python standard library and SQLite, making local development straightforward even in restricted environments.
 
-## Getting started
+## Quick start on macOS with VS Code
+
+1. **Install Python 3 (one-time setup).**
+   - Check whether it is already installed: open the Terminal app and run `python3 --version`.
+   - If you see an error, install Python from [python.org/downloads](https://www.python.org/downloads/) or with Homebrew (`brew install python`).
+
+2. **Open the project in VS Code.**
+   - Launch VS Code, choose **File → Open Folder…**, and select the project directory.
+
+3. **Open the built-in terminal.**
+   - Go to **View → Terminal**. A panel appears at the bottom of VS Code.
+
+4. **(Optional) Create a virtual environment for dependencies.**
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+
+5. **Copy the example environment file.**
+   ```bash
+   cp .env.example .env
+   ```
+   - You can keep the default username (`admin`) and password (`admin123`) while testing. Update them later before deploying.
+
+6. **Start the backend server.**
+   ```bash
+   python3 server.py
+   ```
+   - Leave this terminal window running; it keeps the site alive at [http://localhost:8000](http://localhost:8000).
+
+7. **View the site and admin panel.**
+   - Open your web browser and go to `http://localhost:8000/` to see the public listings.
+   - Visit `http://localhost:8000/admin`, sign in with the credentials from `.env`, and create or delete listings. Changes appear instantly.
+
+> 💡 If VS Code shows `python3: command not found`, ensure Python 3 is installed and added to your `PATH`. After installing, close and reopen VS Code so it picks up the updated environment.
+
+## Getting started on other platforms
 
 1. **Create a virtual environment (optional but recommended):**
    ```bash
