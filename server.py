@@ -1,3 +1,4 @@
+import argparse
 import cgi
 import datetime as dt
 import hashlib
@@ -498,7 +499,16 @@ def run_server(host="0.0.0.0", port=8000):
     init_db()
     ensure_default_admin()
     ensure_sample_listings()
-    httpd = HTTPServer((host, port), AppHandler)
+    try:
+        httpd = HTTPServer((host, port), AppHandler)
+    except OSError as exc:
+        print(
+            "Error: unable to start the server on"
+            f" http://{host}:{port} (reason: {exc}).\n"
+            "If the address is already in use, stop the other program using it "
+            "or run `python3 server.py --port 8001` to try a different port."
+        )
+        return
     print(f"Server running on http://{host}:{port}")
     try:
         httpd.serve_forever()
@@ -507,4 +517,8 @@ def run_server(host="0.0.0.0", port=8000):
 
 
 if __name__ == "__main__":
-    run_server()
+    parser = argparse.ArgumentParser(description="Run the Kunaay demo backend server")
+    parser.add_argument("--host", default="0.0.0.0", help="Host/IP address to bind (default: 0.0.0.0)")
+    parser.add_argument("--port", type=int, default=8000, help="Port to listen on (default: 8000)")
+    cli_args = parser.parse_args()
+    run_server(host=cli_args.host, port=cli_args.port)

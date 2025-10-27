@@ -38,6 +38,7 @@ Follow these seven short steps the first time you open the project:
 
 6. **Start the website.**
    - Type `python3 server.py` and press Enter. Leave this window alone; it keeps running the site at `http://localhost:8000`.
+   - If the terminal says the address is already in use, try `python3 server.py --port 8001` instead.
 
 7. **Look at the site and admin panel.**
    - Open your web browser (Safari, Chrome, etc.) and visit `http://localhost:8000/` to see the listings.
@@ -67,8 +68,16 @@ Follow these seven short steps the first time you open the project:
 
    > 💡 If your terminal reports `python: command not found`, use `python3` (macOS/Linux) or `py` (Windows). Many modern systems ship only the `python3` alias by default.
 
+   > 💡 Port busy? Run `python3 server.py --port 8001` (or another free number) to avoid conflicts with other apps.
+
 4. **Seed data:**
    - On first run the database is created automatically with two sample listings (one rental and one sale) so the site has content immediately.
+
+## Troubleshooting
+
+- **“Address already in use” or the server closes immediately.** Another program is already using the port (often 8000). Run `python3 server.py --port 8001` or stop the conflicting program first.
+- **Still seeing `python3: command not found`.** Ensure Python 3 is installed and that you’re running the command inside VS Code’s terminal (View → Terminal) while the project folder is open.
+- **Pages look blank.** Confirm the backend terminal is still running—if it stopped, restart it with `python3 server.py`.
 
 ## Admin workflow
 
