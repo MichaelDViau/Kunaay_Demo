@@ -13,9 +13,10 @@ Kunaay Real Estate curates vacation rentals and property sales throughout the Ri
 
 1. **Create a virtual environment (optional but recommended):**
    ```bash
-   python -m venv .venv
+   python3 -m venv .venv
    source .venv/bin/activate
    ```
+   - Windows PowerShell: `py -m venv .venv` followed by `.venv\Scripts\Activate.ps1`
 
 2. **Configure credentials:**
    - Copy `.env.example` to `.env` and update `ADMIN_PASSWORD` (and `ADMIN_USERNAME` if needed).
@@ -23,9 +24,12 @@ Kunaay Real Estate curates vacation rentals and property sales throughout the Ri
 
 3. **Launch the backend server:**
    ```bash
-   python server.py
+   python3 server.py
    ```
+   - Windows: `py server.py`
    The server starts on [http://localhost:8000](http://localhost:8000). Static pages and API endpoints are available from the same origin.
+
+   > 💡 If your terminal reports `python: command not found`, use `python3` (macOS/Linux) or `py` (Windows). Many modern systems ship only the `python3` alias by default.
 
 4. **Seed data:**
    - On first run the database is created automatically with two sample listings (one rental and one sale) so the site has content immediately.
