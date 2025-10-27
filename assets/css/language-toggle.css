@@ -61,3 +61,7 @@ body > .skiptranslate,
 body {
   top: 0 !important;
 }
+
+.prt-view {
+  white-space: nowrap;
+}
