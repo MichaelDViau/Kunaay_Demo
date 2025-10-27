@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kunaay Admin</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f7fb;
+            color: #1f2b3d;
+            margin: 0;
+            min-height: 100vh;
+        }
+        header {
+            background: #0a2540;
+            color: #fff;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+        }
+        h1, h2 {
+            margin-top: 0;
+        }
+        form {
+            display: grid;
+            gap: 1rem;
+        }
+        label {
+            display: flex;
+            flex-direction: column;
+            font-weight: 600;
+            color: #0a2540;
+            gap: 0.5rem;
+        }
+        input[type="text"], textarea, select {
+            padding: 0.75rem 1rem;
+            border: 1px solid #ccd6e3;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+        }
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        input[type="file"] {
+            font-size: 1rem;
+        }
+        button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .primary-btn {
+            background: linear-gradient(135deg, #0a2540, #1d4ed8);
+            color: #fff;
+        }
+        .secondary-btn {
+            background: #fff;
+            color: #0a2540;
+            border: 1px solid #ccd6e3;
+        }
+        .listings-grid {
+            margin-top: 2rem;
+            display: grid;
+            gap: 1.5rem;
+        }
+        .listing-card {
+            border: 1px solid #e4e8f1;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            display: grid;
+            gap: 0.75rem;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(29, 78, 216, 0.1);
+            color: #1d4ed8;
+            padding: 0.2rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+        .actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .status {
+            margin-bottom: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+        }
+        .status.error {
+            background: rgba(220, 38, 38, 0.12);
+            color: #b91c1c;
+        }
+        .status.success {
+            background: rgba(21, 128, 61, 0.12);
+            color: #15803d;
+        }
+        .login-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .login-card {
+            max-width: 420px;
+            width: 100%;
+            padding: 2.5rem;
+            background: #fff;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 55px rgba(15, 23, 42, 0.15);
+            display: grid;
+            gap: 1.25rem;
+        }
+        .login-card h1 {
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .actions {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="login-view" class="login-wrapper hidden">
+            <div class="login-card">
+                <h1>Admin Access</h1>
+                <div id="login-status" class="status hidden"></div>
+                <label>
+                    Username
+                    <input type="text" id="login-username" autocomplete="username">
+                </label>
+                <label>
+                    Password
+                    <input type="password" id="login-password" autocomplete="current-password">
+                </label>
+                <button class="primary-btn" id="login-submit">Sign in</button>
+            </div>
+        </div>
+        <div id="dashboard-view" class="hidden">
+            <header>
+                <h1>Kunaay Listings Admin</h1>
+                <div>
+                    <span id="user-name"></span>
+                    <button class="secondary-btn" id="logout-btn">Log out</button>
+                </div>
+            </header>
+            <div class="container">
+                <section>
+                    <h2>Add a new listing</h2>
+                    <div id="form-status" class="status hidden"></div>
+                    <form id="create-listing-form" enctype="multipart/form-data">
+                        <label>
+                            Listing title
+                            <input type="text" name="title" required>
+                        </label>
+                        <label>
+                            Listing type
+                            <select name="category" required>
+                                <option value="rental">Rental</option>
+                                <option value="sale">For Sale</option>
+                            </select>
+                        </label>
+                        <label>
+                            Location
+                            <input type="text" name="location" placeholder="City or neighborhood" required>
+                        </label>
+                        <label>
+                            Short description
+                            <textarea name="summary" maxlength="500" placeholder="One or two sentences for cards" required></textarea>
+                        </label>
+                        <label>
+                            Full description
+                            <textarea name="description" placeholder="Main content for the property page" required></textarea>
+                        </label>
+                        <label>
+                            Photos
+                            <input type="file" name="images" accept="image/*" multiple>
+                        </label>
+                        <button class="primary-btn" type="submit">Create listing</button>
+                    </form>
+                </section>
+                <section>
+                    <h2>Current listings</h2>
+                    <div id="listings"></div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script>
+        const loginView = document.getElementById('login-view');
+        const dashboardView = document.getElementById('dashboard-view');
+        const loginStatus = document.getElementById('login-status');
+        const loginSubmit = document.getElementById('login-submit');
+        const listingsContainer = document.getElementById('listings');
+        const formStatus = document.getElementById('form-status');
+        const createForm = document.getElementById('create-listing-form');
+        const logoutBtn = document.getElementById('logout-btn');
+        const userName = document.getElementById('user-name');
+
+        const escapeMap = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#039;'
+        };
+
+        function escapeHtml(value) {
+            return String(value ?? '').replace(/[&<>"']/g, char => escapeMap[char] || char);
+        }
+
+        function show(element) { element.classList.remove('hidden'); }
+        function hide(element) { element.classList.add('hidden'); }
+        function setStatus(element, message, type = 'success') {
+            if (!message) {
+                hide(element);
+                element.textContent = '';
+                element.classList.remove('error', 'success');
+                return;
+            }
+            element.textContent = message;
+            element.classList.remove('hidden');
+            element.classList.remove('error', 'success');
+            element.classList.add(type);
+        }
+
+        async function checkSession() {
+            try {
+                const res = await fetch('/api/session');
+                const data = await res.json();
+                if (data.authenticated) {
+                    userName.textContent = `Logged in as ${data.username}`;
+                    show(dashboardView);
+                    hide(loginView);
+                    await loadListings();
+                } else {
+                    show(loginView);
+                    hide(dashboardView);
+                }
+            } catch (error) {
+                console.error(error);
+                show(loginView);
+                hide(dashboardView);
+            }
+        }
+
+        async function loadListings() {
+            listingsContainer.innerHTML = '<p>Loading listings…</p>';
+            try {
+                const res = await fetch('/api/admin/listings');
+                if (!res.ok) {
+                    throw new Error('Failed to fetch listings');
+                }
+                const listings = await res.json();
+                if (!Array.isArray(listings) || listings.length === 0) {
+                    listingsContainer.innerHTML = '<p>No listings yet. Create one above!</p>';
+                    return;
+                }
+                listingsContainer.innerHTML = '';
+                const grid = document.createElement('div');
+                grid.className = 'listings-grid';
+                listings.forEach(listing => {
+                    const card = document.createElement('div');
+                    card.className = 'listing-card';
+                    card.innerHTML = `
+                        <div class="badge">${escapeHtml(String(listing.category).toUpperCase())}</div>
+                        <h3>${escapeHtml(listing.title)}</h3>
+                        <p><strong>Location:</strong> ${escapeHtml(listing.location || '—')}</p>
+                        <p>${escapeHtml(listing.summary)}</p>
+                        <div class="actions">
+                            <a class="secondary-btn" href="listing.html?slug=${encodeURIComponent(listing.slug)}" target="_blank">View page</a>
+                            <button class="secondary-btn" data-id="${listing.id}">Delete</button>
+                        </div>
+                    `;
+                    card.querySelector('button').addEventListener('click', () => deleteListing(listing.id));
+                    grid.appendChild(card);
+                });
+                listingsContainer.appendChild(grid);
+            } catch (error) {
+                listingsContainer.innerHTML = '<p class="status error">Unable to load listings.</p>';
+            }
+        }
+
+        async function deleteListing(id) {
+            if (!confirm('Delete this listing? This cannot be undone.')) return;
+            try {
+                const res = await fetch(`/api/admin/listings/${id}/delete`, {
+                    method: 'POST'
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Delete failed');
+                await loadListings();
+            } catch (error) {
+                alert(error.message);
+            }
+        }
+
+        loginSubmit.addEventListener('click', async () => {
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+            setStatus(loginStatus, 'Signing in…', 'success');
+            try {
+                const res = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Unable to login');
+                document.getElementById('login-username').value = '';
+                document.getElementById('login-password').value = '';
+                setStatus(loginStatus, '');
+                await checkSession();
+            } catch (error) {
+                setStatus(loginStatus, error.message, 'error');
+            }
+        });
+
+        logoutBtn.addEventListener('click', async () => {
+            await fetch('/api/logout', { method: 'POST' });
+            await checkSession();
+        });
+
+        createForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(createForm);
+            setStatus(formStatus, 'Publishing listing…', 'success');
+            try {
+                const res = await fetch('/api/admin/listings', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Failed to save listing');
+                createForm.reset();
+                setStatus(formStatus, 'Listing created successfully!', 'success');
+                await loadListings();
+            } catch (error) {
+                setStatus(formStatus, error.message, 'error');
+            }
+        });
+
+        checkSession();
+    </script>
+</body>
+</html>
