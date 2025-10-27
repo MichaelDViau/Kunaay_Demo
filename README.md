@@ -11,39 +11,39 @@ Kunaay Real Estate curates vacation rentals and property sales throughout the Ri
 
 ## Quick start on macOS with VS Code
 
-1. **Install Python 3 (one-time setup).**
-   - Check whether it is already installed: open the Terminal app and run `python3 --version`.
-   - If you see an error, install Python from [python.org/downloads](https://www.python.org/downloads/) or with Homebrew (`brew install python`).
+### Super simple walkthrough
 
-2. **Open the project in VS Code.**
-   - Launch VS Code, choose **File → Open Folder…**, and select the project directory.
+Follow these seven short steps the first time you open the project:
 
-3. **Open the built-in terminal.**
-   - Go to **View → Terminal**. A panel appears at the bottom of VS Code.
+1. **Install Python 3 (only once).**
+   - Open the Terminal app and type `python3 --version`.
+   - If you see a version number, you already have it. If you see an error, download Python from [python.org/downloads](https://www.python.org/downloads/) or install with Homebrew: `brew install python`.
 
-4. **(Optional) Create a virtual environment for dependencies.**
-   ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate
-   ```
+2. **Open the folder in VS Code.**
+   - Start VS Code, click **File → Open Folder…**, and pick the project folder you downloaded.
 
-5. **Copy the example environment file.**
-   ```bash
-   cp .env.example .env
-   ```
-   - You can keep the default username (`admin`) and password (`admin123`) while testing. Update them later before deploying.
+3. **Show the terminal inside VS Code.**
+   - Click **View → Terminal**. A little command window opens at the bottom.
 
-6. **Start the backend server.**
-   ```bash
-   python3 server.py
-   ```
-   - Leave this terminal window running; it keeps the site alive at [http://localhost:8000](http://localhost:8000).
+4. **Copy the example settings file.**
+   - In that terminal, type `cp .env.example .env` and press Enter. This gives the server a username and password to use.
 
-7. **View the site and admin panel.**
-   - Open your web browser and go to `http://localhost:8000/` to see the public listings.
-   - Visit `http://localhost:8000/admin`, sign in with the credentials from `.env`, and create or delete listings. Changes appear instantly.
+5. **(Optional) Make a virtual environment.**
+   - If you want to keep things tidy, run:
+     ```bash
+     python3 -m venv .venv
+     source .venv/bin/activate
+     ```
+   - You can skip this step for a quick test.
 
-> 💡 If VS Code shows `python3: command not found`, ensure Python 3 is installed and added to your `PATH`. After installing, close and reopen VS Code so it picks up the updated environment.
+6. **Start the website.**
+   - Type `python3 server.py` and press Enter. Leave this window alone; it keeps running the site at `http://localhost:8000`.
+
+7. **Look at the site and admin panel.**
+   - Open your web browser (Safari, Chrome, etc.) and visit `http://localhost:8000/` to see the listings.
+   - Go to `http://localhost:8000/admin`, log in with username `admin` and password `admin123` (unless you changed them in `.env`), and try adding or removing a listing.
+
+> 💡 If VS Code says `python3: command not found`, Python is still missing. Install it, then completely close VS Code and open it again so it notices the new command.
 
 ## Getting started on other platforms
 
