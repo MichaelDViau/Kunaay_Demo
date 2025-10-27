@@ -140,6 +140,6 @@
 
 /* About page intro alignment */
 .about-intro-row{row-gap:2rem;}
-.about-intro-content{text-align:center;}
-@media (min-width:768px){.about-intro-content{text-align:left;}}
+.about-intro-content{text-align:left;}
+.about-intro-content .section-title,.about-intro-content .section-subtitle,.about-intro-content .section-text{margin-left:0;margin-right:0;text-align:left;}
 @media (min-width:992px){.about-intro-row{column-gap:2rem;}}
